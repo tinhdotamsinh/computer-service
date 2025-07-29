@@ -1,0 +1,47 @@
+---
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Image } from "astro:assets";
+import { Button } from "@/components/ui/button";
+import { ShoppingCart } from "lucide-react";
+const {product} = Astro.props;
+---
+<Card key={product.id} className="hover:shadow-lg transition-shadow">
+    <CardHeader className="pb-4">
+      <div class="relative">
+        <Image
+          src={product.image || "/placeholder.svg"}
+          alt={product.name}
+          width={200}
+          height={300}
+          class="w-full h-80 object-cover rounded-lg"
+        />
+        <!-- <Badge
+          className="absolute top-2 right-2"
+          variant={product.badge === "Sale" ? "destructive" : "default"}
+        >
+          {product.badge}
+        </Badge> -->
+      </div>
+    </CardHeader>
+    <CardContent>
+      <div class="mb-2">
+        <Badge variant="secondary" className="text-xs">
+          {product.category}
+        </Badge>
+      </div>
+      <CardTitle className="text-lg mb-2">{product.name}</CardTitle>
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2">
+          <span class="text-2xl font-bold text-green-600">{product.price} VNĐ</span>
+          {product.originalPrice > product.price && (
+            <span class="text-sm text-gray-500 line-through">{product.originalPrice} VNĐ</span>
+          )}
+        </div>
+      </div>
+      <Button className="w-full">
+        <ShoppingCart className="h-4 w-4 mr-2" />
+        Thêm vào giỏ hàng
+      </Button>
+    </CardContent>
+  </Card>

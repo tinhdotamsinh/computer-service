@@ -1,0 +1,127 @@
+---
+import { Facebook, Instagram, Mail, MapPin, Phone, Twitter, Youtube } from "lucide-react";
+---
+
+<footer class="bg-gray-900 text-white">
+    <div class="container mx-auto px-4 py-12">
+      <div class="grid md:grid-cols-4 gap-8">
+        {/* Company Info */}
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <div class="bg-green-600 text-white p-2 rounded-lg">
+              <span class="font-bold text-xl">TS</span>
+            </div>
+            <div>
+              <h3 class="font-bold text-xl">TechStore</h3>
+              <p class="text-sm text-gray-400">Giải pháp Máy tính</p>
+            </div>
+          </div>
+          <p class="text-gray-400 mb-4">
+            Đối tác tin cậy của bạn về sửa chữa máy tính và linh kiện cao cấp từ năm 2010.
+          </p>
+          <div class="flex space-x-4">
+            <Facebook className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer" />
+            <Twitter className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer" />
+            <Instagram className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer" />
+            <Youtube className="h-5 w-5 text-gray-400 hover:text-white cursor-pointer" />
+          </div>
+        </div>
+
+        {/* Quick Links */}
+        <div>
+          <h4 class="font-semibold mb-4">Liên kết nhanh</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li>
+              <a href="/products" class="hover:text-white">
+                Tất cả sản phẩm
+              </a>
+            </li>
+            <li>
+              <a href="/services" class="hover:text-white">
+                Dịch vụ sửa chữa
+              </a>
+            </li>
+            <li>
+              <a href="/about" class="hover:text-white">
+                Về chúng tôi
+              </a>
+            </li>
+            <li>
+              <a href="/contact" class="hover:text-white">
+                Liên hệ
+              </a>
+            </li>
+            <li>
+              <a href="/blog" class="hover:text-white">
+                Blog công nghệ
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Categories */}
+        <div>
+          <h4 class="font-semibold mb-4">Danh mục</h4>
+          <ul class="space-y-2 text-gray-400">
+            <li>
+              <a href="/products/cpu" class="hover:text-white">
+                CPU
+              </a>
+            </li>
+            <li>
+              <a href="/products/gpu" class="hover:text-white">
+                Card đồ họa
+              </a>
+            </li>
+            <li>
+              <a href="/products/ram" class="hover:text-white">
+                Bộ nhớ RAM
+              </a>
+            </li>
+            <li>
+              <a href="/products/storage" class="hover:text-white">
+                Lưu trữ
+              </a>
+            </li>
+            <li>
+              <a href="/products/motherboard" class="hover:text-white">
+                Bo mạch chủ
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        {/* Contact Info */}
+        <div>
+          <h4 class="font-semibold mb-4">Thông tin liên hệ</h4>
+          <div class="space-y-3 text-gray-400">
+            <div class="flex items-center space-x-3">
+              <Phone className="h-5 w-5" />
+              <span>+1 (555) 123-4567</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <Mail className="h-5 w-5" />
+              <span>info@techstore.com</span>
+            </div>
+            <div class="flex items-center space-x-3">
+              <MapPin className="h-5 w-5" />
+              <span>123 Tech Street, Digital City, DC 12345</span>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <h5 class="font-semibold mb-2">Giờ mở cửa</h5>
+            <div class="text-sm text-gray-400">
+              <p>Thứ Hai-Thứ Sáu: 9:00 AM - 7:00 PM</p>
+              <p>Thứ Bảy: 10:00 AM - 6:00 PM</p>
+              <p>Chủ Nhật: 12:00 PM - 5:00 PM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        <p>&copy; 2024 TechStore. Mọi quyền được bảo lưu. | Chính sách bảo mật | Điều khoản dịch vụ</p>
+      </div>
+    </div>
+  </footer>

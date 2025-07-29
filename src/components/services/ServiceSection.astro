@@ -1,0 +1,134 @@
+---
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Wrench, Shield, Zap, Clock, CheckCircle, ArrowRight } from "lucide-react"
+
+const services = [
+  {
+    icon: Wrench,
+    title: "Sửa chữa phần cứng",
+    description: "Chẩn đoán và sửa chữa phần cứng cho tất cả các linh kiện máy tính",
+    features: [
+      "Thay thế linh kiện",
+      "Sửa chữa mainboard",
+      "Khắc phục nguồn điện",
+      "Bảo trì hệ thống tản nhiệt"
+    ],
+    price: "Chỉ từ 1.200.000đ",
+    duration: "1-3 ngày",
+  },
+  {
+    icon: Shield,
+    title: "Diệt virus & Bảo mật",
+    description: "Loại bỏ phần mềm độc hại và thiết lập bảo mật toàn diện cho hệ thống",
+    features: [
+      "Diệt virus & phần mềm độc hại",
+      "Cài đặt phần mềm bảo mật",
+      "Tối ưu hệ thống",
+      "Khôi phục dữ liệu"
+    ],
+    price: "Chỉ từ 1.900.000đ",
+    duration: "2-4 giờ",
+  },
+  {
+    icon: Zap,
+    title: "Nâng cấp hiệu năng",
+    description: "Tăng tốc máy tính với các giải pháp nâng cấp phần cứng và phần mềm",
+    features: [
+      "Nâng cấp RAM",
+      "Lắp đặt SSD",
+      "Nâng cấp card đồ họa",
+      "Tối ưu hệ thống"
+    ],
+    price: "Chỉ từ 2.400.000đ",
+    duration: "1-2 ngày",
+  },
+]
+---
+<section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Dịch vụ sửa chữa chuyên nghiệp</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Đội ngũ kỹ thuật viên giàu kinh nghiệm, sẵn sàng giải quyết mọi vấn đề máy tính của bạn nhanh chóng và uy tín
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        {services.map((service, index) => {
+          const Icon = service.icon
+          return (
+            <Card key={index} className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div class="flex items-center space-x-4">
+                  <div class="bg-green-600 p-3 rounded-lg">
+                    <Icon className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-xl">{service.title}</CardTitle>
+                    <div class="flex items-center space-x-4 text-sm text-gray-600 mt-1">
+                      <span class="flex items-center">
+                        <Clock className="h-4 w-4 mr-1" />
+                        {service.duration}
+                      </span>
+                      <span class="font-semibold text-green-600">{service.price}</span>
+                    </div>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p class="text-gray-600 mb-4">{service.description}</p>
+                <ul class="space-y-2 mb-6">
+                  {service.features.map((feature) => (
+                    <li class="flex items-center text-sm">
+                      <CheckCircle className="h-4 w-4 text-green-600 mr-2 flex-shrink-0" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <Button className="w-full bg-green-600 hover:bg-green-700">
+                  Đặt lịch dịch vụ
+                  <ArrowRight className="h-4 w-4 ml-2" />
+                </Button>
+              </CardContent>
+            </Card>
+          )
+        })}
+      </div>
+
+      {/* Service guarantees */}
+      <div class="bg-white rounded-lg p-8">
+        <h3 class="text-2xl font-bold text-center mb-8">Cam kết dịch vụ</h3>
+        <div class="grid md:grid-cols-4 gap-6 text-center">
+          <div>
+            <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Shield className="h-8 w-8 text-green-600" />
+            </div>
+            <h4 class="font-semibold mb-2">Bảo hành 90 ngày</h4>
+            <p class="text-sm text-gray-600">Tất cả dịch vụ sửa chữa được bảo hành 90 ngày</p>
+          </div>
+          <div>
+            <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Clock className="h-8 w-8 text-green-600" />
+            </div>
+            <h4 class="font-semibold mb-2">Xử lý nhanh chóng</h4>
+            <p class="text-sm text-gray-600">Hầu hết sửa chữa hoàn thành trong 24-48 giờ</p>
+          </div>
+          <div>
+            <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <CheckCircle className="h-8 w-8 text-green-600" />
+            </div>
+            <h4 class="font-semibold mb-2">Sữa chữa tận nơi</h4>
+            <p class="text-sm text-gray-600">Sửa chữa tận nơi, không phải mang máy đến cửa hàng</p>
+          </div>
+          <div>
+            <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Wrench className="h-8 w-8 text-green-600" />
+            </div>
+            <h4 class="font-semibold mb-2">Chẩn đoán miễn phí</h4>
+            <p class="text-sm text-gray-600">Miễn phí kiểm tra và tư vấn lỗi ban đầu</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

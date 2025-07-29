@@ -1,0 +1,88 @@
+---
+import { Button } from "../ui/button";
+import ProductCard from "./ProductCard.astro";
+// Sample product list
+const products = [
+  {
+    id: 1,
+    name: "Bàn phím chơi game",
+    price: 100,
+    image: "/product-1.png",
+    category: "Bàn phím",
+  },
+  {
+    id: 2,
+    name: "GPU cao cấp",
+    price: 1200,
+    image: "/product-1.png",
+    category: "Bàn phím",
+  },
+  {
+    id: 3,
+    name: "Chuột cơ",
+    price: 70,
+    image: "/product-1.png",
+    category: "Bàn phím",
+  },
+  {
+    id: 4,
+    name: "Chuột cơ",
+    price: 70,
+    image: "/product-1.png",
+    category: "Bàn phím",
+  },
+  {
+    id: 5,
+    name: "Chuột cơ",
+    price: 70,
+    image: "/product-1.png",
+    category: "Bàn phím",
+  },
+  {
+    id: 6,
+    name: "Chuột cơ",
+    price: 70,
+    image: "/product-1.png",
+    category: "Bàn phím",
+  },
+  {
+    id: 7,
+    name: "Chuột cơ",
+    price: 70,
+    image: "/product-1.png",
+    category: "Bàn phím",
+  },
+  {
+    id: 8,
+    name: "Chuột cơ",
+    price: 70,
+    image: "/product-1.png",
+    category: "Bàn phím",
+  },
+];
+---
+
+<section class="py-20 ">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Linh kiện nổi bật</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Linh kiện máy tính cao cấp với giá cả cạnh tranh và giao hàng nhanh chóng
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 mb-12">
+       {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
+       ))}
+    </div>
+
+    <div class="text-center">
+      <a href="/store">
+      <Button variant="success" className="rounded-full">
+          Mua tất cả linh kiện
+        </Button>
+      </a>
+    </div>
+  </div>
+</section>
