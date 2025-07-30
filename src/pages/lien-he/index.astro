@@ -1,0 +1,376 @@
+---
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Badge } from "@/components/ui/badge"
+import { Separator } from "@/components/ui/separator"
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  MessageSquare,
+  Headphones,
+  Wrench,
+  ShoppingCart,
+  Users,
+  Send,
+  AlertCircle,
+  Navigation,
+} from "lucide-react"
+import Layout from "@/layouts/Layout.astro"
+const contactMethods = [
+  {
+    icon: Phone,
+    title: "Gọi cho chúng tôi",
+    description: "Trò chuyện trực tiếp với đội ngũ chuyên gia của chúng tôi",
+    primary: "+1 (555) 123-4567",
+    secondary: "Miễn phí: +1 (800) 555-TECH",
+    hours: "Thứ Hai-Thứ Sáu: 9AM-7PM, Thứ Bảy: 10AM-6PM",
+    color: "bg-blue-500",
+  },
+  {
+    icon: Mail,
+    title: "Hỗ trợ qua email",
+    description: "Gửi câu hỏi của bạn bất cứ lúc nào",
+    primary: "support@techstore.com",
+    secondary: "sales@techstore.com",
+    hours: "Thời gian phản hồi: 24-48 giờ",
+    color: "bg-green-500",
+  },
+  {
+    icon: MessageSquare,
+    title: "Trò chuyện trực tuyến",
+    description: "Nhận trợ giúp tức thì từ đội ngũ của chúng tôi",
+    primary: "Có sẵn trên website",
+    secondary: "Thời gian phản hồi trung bình: 2 phút",
+    hours: "Thứ Hai-Thứ Sáu: 9AM-7PM",
+    color: "bg-purple-500",
+  },
+  {
+    icon: MapPin,
+    title: "Ghé thăm cửa hàng của chúng tôi",
+    description: "Hãy đến xem sản phẩm trực tiếp",
+    primary: "123 Tech Street",
+    secondary: "Digital City, DC 12345",
+    hours: "Thứ Hai-Thứ Bảy: 9AM-7PM, Chủ Nhật: 12PM-5PM",
+    color: "bg-orange-500",
+  },
+]
+
+const departments = [
+  {
+    icon: ShoppingCart,
+    name: "Bán hàng",
+    description: "Yêu cầu sản phẩm và mua hàng",
+    email: "sales@techstore.com",
+    phone: "+1 (555) 123-4567 máy lẻ 1",
+  },
+  {
+    icon: Wrench,
+    name: "Hỗ trợ kỹ thuật",
+    description: "Dịch vụ sửa chữa và trợ giúp kỹ thuật",
+    email: "support@techstore.com",
+    phone: "+1 (555) 123-4567 máy lẻ 2",
+  },
+  {
+    icon: Users,
+    name: "Dịch vụ khách hàng",
+    description: "Yêu cầu chung và trợ giúp tài khoản",
+    email: "service@techstore.com",
+    phone: "+1 (555) 123-4567 máy lẻ 3",
+  },
+  {
+    icon: Headphones,
+    name: "Trả hàng & Đổi hàng",
+    description: "Chính sách trả hàng và yêu cầu đổi hàng",
+    email: "returns@techstore.com",
+    phone: "+1 (555) 123-4567 máy lẻ 4",
+  },
+]
+
+const faqs = [
+  {
+    question: "Giờ mở cửa của cửa hàng bạn là gì?",
+    answer:
+      "Chúng tôi mở cửa từ Thứ Hai-Thứ Sáu 9AM-7PM, Thứ Bảy 10AM-6PM và Chủ Nhật 12PM-5PM. Hỗ trợ điện thoại của chúng tôi theo cùng giờ.",
+  },
+  {
+    question: "Bạn có cung cấp dịch vụ sửa chữa tại chỗ không?",
+    answer:
+      "Có! Chúng tôi cung cấp dịch vụ sửa chữa tại chỗ cho các doanh nghiệp và thiết lập phức tạp trong bán kính 25 dặm. Liên hệ với chúng tôi để biết tình trạng sẵn có và giá cả.",
+  },
+  {
+    question: "Chính sách trả hàng của bạn là gì?",
+    answer:
+      "Chúng tôi áp dụng chính sách trả hàng trong 30 ngày cho hầu hết các mặt hàng. Sản phẩm phải ở trong tình trạng ban đầu với tất cả bao bì. Một số hạn chế áp dụng cho các hệ thống được xây dựng tùy chỉnh.",
+  },
+  {
+    question: "Bạn có khớp giá không?",
+    answer:
+      "Có, chúng tôi cung cấp khớp giá trên các sản phẩm giống hệt từ các nhà bán lẻ được ủy quyền. Liên hệ với đội ngũ bán hàng của chúng tôi với giá của đối thủ cạnh tranh để xác minh.",
+  },
+  {
+    question: "Việc sửa chữa thường mất bao lâu?",
+    answer:
+      "Hầu hết các sửa chữa được hoàn thành trong vòng 24-48 giờ. Các vấn đề phức tạp có thể mất 3-5 ngày làm việc. Chúng tôi cung cấp ước tính thời gian trước và cập nhật cho bạn trong suốt quá trình.",
+  },
+]
+---
+
+<Layout>
+    <section class="bg-green-600 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">Liên hệ với chúng tôi</h1>
+          <p class="text-xl text-green-100 max-w-2xl mx-auto">
+            Bạn có câu hỏi về sản phẩm hoặc dịch vụ của chúng tôi? Chúng tôi luôn sẵn sàng trợ giúp! Liên hệ với chúng tôi qua bất kỳ phương thức nào dưới đây.
+          </p>
+        </div>
+      </section>
+    
+      <div class="container mx-auto px-4 py-12">
+        {/* Contact Methods */}
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {contactMethods.map((method, index) => {
+            const Icon = method.icon
+            return (
+              <Card key={index} className="text-center hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <div
+                    class={`${method.color} w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4`}
+                  >
+                    <Icon className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 class="font-semibold text-lg mb-2">{method.title}</h3>
+                  <p class="text-gray-600 text-sm mb-4">{method.description}</p>
+                  <div class="space-y-1">
+                    <p class="font-medium text-gray-900">{method.primary}</p>
+                    <p class="text-sm text-gray-600">{method.secondary}</p>
+                    <p class="text-xs text-gray-500">{method.hours}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            )
+          })}
+        </div>
+    
+        <div class="grid lg:grid-cols-3 gap-12">
+          {/* Contact Form */}
+          <div class="lg:col-span-2">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center text-2xl">
+                  <Send className="h-6 w-6 mr-3 text-green-600" />
+                  Gửi tin nhắn cho chúng tôi
+                </CardTitle>
+                <p class="text-gray-600">Điền vào biểu mẫu dưới đây và chúng tôi sẽ liên hệ lại với bạn sớm nhất có thể.</p>
+              </CardHeader>
+              <CardContent>
+                  <form class="space-y-6">
+                    {/* Personal Information */}
+                    <div class="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <label class="block text-sm font-medium mb-2">
+                          Họ và tên <span class="text-red-500">*</span>
+                        </label>
+                        <Input
+                          type="text"
+                          placeholder="Nguyễn Văn A"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label class="block text-sm font-medium mb-2">
+                          Địa chỉ email <span class="text-red-500">*</span>
+                        </label>
+                        <Input
+                          type="email"
+                          placeholder="nguyenvana@example.com"
+                          required
+                        />
+                      </div>
+                    </div>
+    
+                    <div class="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <label class="block text-sm font-medium mb-2">Số điện thoại</label>
+                        <Input
+                          type="tel"
+                          placeholder="(84) 123-4567"
+                        />
+                      </div>
+                    </div>
+    
+                    <div class="grid md:grid-cols-2 gap-4">
+                      <div>
+                        <label class="block text-sm font-medium mb-2">
+                          Chủ đề <span class="text-red-500">*</span>
+                        </label>
+                        <Input
+                          type="text"
+                          placeholder="Mô tả ngắn gọn về yêu cầu của bạn"
+                          required
+                        />
+                      </div>
+                    </div>
+    
+                    <div>
+                      <label class="block text-sm font-medium mb-2">
+                        Tin nhắn <span class="text-red-500">*</span>
+                      </label>
+                      <Textarea
+                        placeholder="Vui lòng cung cấp chi tiết về yêu cầu của bạn..."
+                        rows={5}
+                        required
+                      />
+                    </div>
+    
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                      <div class="flex items-start space-x-3">
+                        <AlertCircle className="h-5 w-5 text-blue-600 mt-0.5" />
+                        <div>
+                          <h4 class="font-medium text-blue-900">Thời gian phản hồi</h4>
+                          <p class="text-sm text-blue-800 mt-1">
+                            Chúng tôi thường phản hồi các yêu cầu trong vòng 24 giờ vào các ngày làm việc. Đối với các vấn đề kỹ thuật khẩn cấp,
+                            vui lòng gọi trực tiếp cho chúng tôi theo số +1 (555) 123-4567.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+    
+                    <Button
+                      type="submit"
+                      className="w-full bg-green-600 hover:bg-green-700 h-12"
+                    >
+                        <>
+                          <Send className="h-4 w-4 mr-2" />
+                          Gửi tin nhắn
+                        </>
+                    </Button>
+                  </form>
+                
+              </CardContent>
+            </Card>
+          </div>
+    
+          {/* Sidebar */}
+          <div class="space-y-6">
+    
+            {/* Business Hours */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Clock className="h-5 w-5 mr-2" />
+                  Giờ làm việc
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">Thứ Hai - Thứ Sáu</span>
+                  <Badge variant="outline">9:00 AM - 7:00 PM</Badge>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">Thứ Bảy</span>
+                  <Badge variant="outline">10:00 AM - 6:00 PM</Badge>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-600">Chủ Nhật</span>
+                  <Badge variant="outline">12:00 PM - 5:00 PM</Badge>
+                </div>
+                <Separator className="my-3" />
+                <div class="text-center">
+                  <Badge className="bg-green-100 text-green-800">Hiện đang mở cửa</Badge>
+                  <p class="text-xs text-gray-500 mt-1">Đóng cửa lúc 7:00 PM hôm nay</p>
+                </div>
+              </CardContent>
+            </Card>
+    
+          </div>
+        </div>
+    
+        {/* Location & Map */}
+        <div class="mt-16">
+          <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Ghé thăm cửa hàng của chúng tôi</h2>
+          <div class="grid lg:grid-cols-2 gap-8">
+            {/* Store Information */}
+            <Card>
+              <CardContent className="p-8">
+                <div class="space-y-6">
+                  <div class="flex items-start space-x-4">
+                    <MapPin className="h-6 w-6 text-green-600 mt-1" />
+                    <div>
+                      <h3 class="font-semibold text-lg mb-2">Địa điểm chính của TechStore</h3>
+                      <p class="text-gray-600">
+                        123 Tech Street
+                        <br />
+                        Digital City, DC 12345
+                        <br />
+                        Hoa Kỳ
+                      </p>
+                    </div>
+                  </div>
+    
+                  <div class="flex items-start space-x-4">
+                    <Phone className="h-6 w-6 text-green-600 mt-1" />
+                    <div>
+                      <h4 class="font-medium mb-1">Điện thoại</h4>
+                      <p class="text-gray-600">+1 (555) 123-4567</p>
+                    </div>
+                  </div>
+    
+                  <div class="flex items-start space-x-4">
+                    <Mail className="h-6 w-6 text-green-600 mt-1" />
+                    <div>
+                      <h4 class="font-medium mb-1">Email</h4>
+                      <p class="text-gray-600">info@techstore.com</p>
+                    </div>
+                  </div>
+    
+                  <div class="flex items-start space-x-4">
+                    <Clock className="h-6 w-6 text-green-600 mt-1" />
+                    <div>
+                      <h4 class="font-medium mb-2">Giờ cửa hàng</h4>
+                      <div class="space-y-1 text-sm text-gray-600">
+                        <p>Thứ Hai - Thứ Sáu: 9:00 AM - 7:00 PM</p>
+                        <p>Thứ Bảy: 10:00 AM - 6:00 PM</p>
+                        <p>Chủ Nhật: 12:00 PM - 5:00 PM</p>
+                      </div>
+                    </div>
+                  </div>
+    
+                  <Button className="w-full bg-green-600 hover:bg-green-700">
+                    <Navigation className="h-4 w-4 mr-2" />
+                    Chỉ đường
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+    
+            {/* Map Placeholder */}
+            <Card className="p-0">
+              <CardContent className="p-0">
+                <div class=" rounded-lg flex items-center justify-center">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31359.967418420183!2d106.69100359999999!3d10.7347968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f006586c029%3A0x4fbc68f329d7faa0!2sAEON%20Ta%20Quang%20Buu!5e0!3m2!1sen!2s!4v1753887507715!5m2!1sen!2s" width="750" height="560" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+    
+        {/* FAQ Section */}
+        <div class="mt-16">
+          <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Câu hỏi thường gặp</h2>
+          <div class="max-w-3xl mx-auto space-y-4">
+            {faqs.map((faq, index) => (
+              <Card key={index}>
+                <CardContent className="p-6">
+                  <h3 class="font-semibold text-lg text-gray-900 mb-3">{faq.question}</h3>
+                  <p class="text-gray-600">{faq.answer}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </div>
+</Layout>
