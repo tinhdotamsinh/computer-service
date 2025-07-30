@@ -1,0 +1,286 @@
+---
+import { Button } from "@/components/ui/button";
+import { Image } from "astro:assets";
+import { ArrowLeft, BookmarkPlus, Calendar, Clock, Share2, User } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { ArrowRight } from "lucide-react";
+import Layout from "@/layouts/Layout.astro";
+export const getStaticPaths = (() => {
+    const blogPost = {
+  id: 1,
+  title: "How to Choose the Right Graphics Card for Gaming in 2024",
+  content: `
+    <p>Choosing the right graphics card is one of the most important decisions when building or upgrading a gaming PC. With so many options available from NVIDIA and AMD, it can be overwhelming to determine which GPU will provide the best performance for your specific needs and budget.</p>
+    
+    <h2>Understanding Your Gaming Requirements</h2>
+    <p>Before diving into specific graphics card recommendations, it's crucial to understand what you want to achieve with your gaming setup. Consider the following factors:</p>
+    
+    <ul>
+      <li><strong>Resolution:</strong> Are you gaming at 1080p, 1440p, or 4K?</li>
+      <li><strong>Frame Rate Goals:</strong> Do you want 60fps, 120fps, or higher?</li>
+      <li><strong>Game Types:</strong> Are you playing competitive esports titles or demanding AAA games?</li>
+      <li><strong>Budget:</strong> What's your maximum spending limit?</li>
+    </ul>
+
+    <h2>Current Market Leaders</h2>
+    <p>As of 2024, the graphics card market is dominated by two major players:</p>
+    
+    <h3>NVIDIA RTX 40 Series</h3>
+    <p>NVIDIA's latest RTX 40 series offers exceptional performance with features like DLSS 3, ray tracing, and excellent power efficiency. Popular models include:</p>
+    <ul>
+      <li>RTX 4090 - Ultimate 4K gaming performance</li>
+      <li>RTX 4080 - High-end 4K and excellent 1440p performance</li>
+      <li>RTX 4070 Ti - Great 1440p gaming with ray tracing</li>
+      <li>RTX 4060 Ti - Solid 1080p and entry-level 1440p gaming</li>
+    </ul>
+
+    <h3>AMD Radeon RX 7000 Series</h3>
+    <p>AMD's RDNA 3 architecture provides competitive performance with excellent value propositions:</p>
+    <ul>
+      <li>RX 7900 XTX - Flagship performance competing with RTX 4080</li>
+      <li>RX 7800 XT - Strong 1440p performance at a competitive price</li>
+      <li>RX 7600 - Budget-friendly 1080p gaming solution</li>
+    </ul>
+
+    <h2>Performance Recommendations by Resolution</h2>
+    
+    <h3>1080p Gaming</h3>
+    <p>For smooth 1080p gaming at high settings, consider these options:</p>
+    <ul>
+      <li><strong>Budget ($200-300):</strong> RTX 4060, RX 7600</li>
+      <li><strong>Mid-range ($300-500):</strong> RTX 4060 Ti, RX 6700 XT</li>
+      <li><strong>High-end ($500+):</strong> RTX 4070, RX 7800 XT</li>
+    </ul>
+
+    <h3>1440p Gaming</h3>
+    <p>1440p gaming requires more powerful hardware for optimal performance:</p>
+    <ul>
+      <li><strong>Entry-level:</strong> RTX 4060 Ti, RX 7600 XT</li>
+      <li><strong>Recommended:</strong> RTX 4070, RX 7800 XT</li>
+      <li><strong>High-end:</strong> RTX 4070 Ti, RX 7900 XT</li>
+    </ul>
+
+    <h3>4K Gaming</h3>
+    <p>4K gaming demands the most powerful graphics cards available:</p>
+    <ul>
+      <li><strong>Minimum:</strong> RTX 4070 Ti, RX 7900 XT</li>
+      <li><strong>Recommended:</strong> RTX 4080, RX 7900 XTX</li>
+      <li><strong>Ultimate:</strong> RTX 4090</li>
+    </ul>
+
+    <h2>Additional Considerations</h2>
+    
+    <h3>VRAM Requirements</h3>
+    <p>Video memory (VRAM) is becoming increasingly important as games become more demanding. Here are general recommendations:</p>
+    <ul>
+      <li><strong>1080p:</strong> 8GB minimum, 12GB recommended</li>
+      <li><strong>1440p:</strong> 12GB minimum, 16GB recommended</li>
+      <li><strong>4K:</strong> 16GB minimum, 20GB+ preferred</li>
+    </ul>
+
+    <h3>Power Supply Requirements</h3>
+    <p>Ensure your power supply can handle your chosen graphics card:</p>
+    <ul>
+      <li><strong>RTX 4060/RX 7600:</strong> 550W PSU</li>
+      <li><strong>RTX 4070/RX 7800 XT:</strong> 650W PSU</li>
+      <li><strong>RTX 4080/RX 7900 XTX:</strong> 750W PSU</li>
+      <li><strong>RTX 4090:</strong> 850W+ PSU</li>
+    </ul>
+
+    <h2>Final Recommendations</h2>
+    <p>Based on current market conditions and performance data, here are our top picks for different scenarios:</p>
+    
+    <ul>
+      <li><strong>Best Overall Value:</strong> RTX 4070 - Excellent 1440p performance with great efficiency</li>
+      <li><strong>Best Budget Option:</strong> RX 7600 - Solid 1080p gaming at an affordable price</li>
+      <li><strong>Best High-End:</strong> RTX 4080 - Outstanding 4K performance with DLSS support</li>
+      <li><strong>Best Flagship:</strong> RTX 4090 - Unmatched performance for enthusiasts</li>
+    </ul>
+
+    <p>Remember that graphics card prices fluctuate frequently, so it's worth monitoring deals and considering previous-generation cards that may offer better value. Always ensure your system's other components (CPU, RAM, PSU) can support your chosen graphics card for optimal performance.</p>
+  `,
+  author: "Michael Rodriguez",
+  date: "2024-01-15",
+  readTime: "8 min read",
+  category: "Hardware Guide",
+  image: "/product-1.png",
+  tags: ["GPU", "Gaming", "Hardware", "RTX", "AMD"],
+}
+    return [
+        {
+            params: {id: 1},
+            props: {blogPost}
+        }
+    ];
+});
+const {params, props} = Astro;
+const blogPost = props?.blogPost || {};
+
+const relatedPosts = [
+  {
+    id: 2,
+    title: "Building Your First Custom PC: A Complete Beginner's Guide",
+    image: "/product-1.png",
+    category: "Build Guide",
+  },
+  {
+    id: 3,
+    title: "RAM Upgrade Guide: How Much Memory Do You Really Need?",
+    image: "/product-1.png",
+    category: "Hardware Guide",
+  },
+]
+---
+<Layout>
+    <div class="container mx-auto px-4 py-8">
+        {/* Back Button */}
+        <div class="mb-6">
+          <Button variant="ghost" className="hover:bg-green-50">
+            <a href="/blog" class="flex items-center">
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Blog
+            </a>
+          </Button>
+        </div>
+    
+        <div class="grid lg:grid-cols-4 gap-8">
+          {/* Main Content */}
+          <article class="lg:col-span-3">
+            {/* Header */}
+            <div class="mb-8">
+              <Badge className="bg-green-100 text-green-800 mb-4">{blogPost.category}</Badge>
+    
+              <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{blogPost.title}</h1>
+    
+              <div class="flex items-center text-gray-600 mb-6">
+                <User className="h-4 w-4 mr-2" />
+                <span class="mr-4">{blogPost.author}</span>
+                <Calendar className="h-4 w-4 mr-2" />
+                <span class="mr-4">{new Date(blogPost.date).toLocaleDateString()}</span>
+                <Clock className="h-4 w-4 mr-2" />
+                <span>{blogPost.readTime}</span>
+              </div>
+    
+              <div class="flex items-center gap-4 mb-6">
+                <Button variant="outline" size="sm">
+                  <Share2 className="h-4 w-4 mr-2" />
+                  Share
+                </Button>
+                <Button variant="outline" size="sm">
+                  <BookmarkPlus className="h-4 w-4 mr-2" />
+                  Save
+                </Button>
+              </div>
+            </div>
+    
+            {/* Featured Image */}
+            <div class="mb-8">
+              <Image
+                src={blogPost.image || "/placeholder.svg"}
+                alt={blogPost.title}
+                width={800}
+                height={400}
+                class="w-full h-64 md:h-96 object-cover rounded-lg"
+              />
+            </div>
+    
+            {/* Content */}
+            <div class="prose prose-lg max-w-none mb-8" set:html={blogPost.content} />
+    
+            {/* Tags */}
+            <div class="mb-8">
+              <h3 class="text-lg font-semibold mb-4">Tags</h3>
+              <div class="flex flex-wrap gap-2">
+                {blogPost.tags.map((tag, index) => (
+                  <Badge key={index} variant="outline" className="hover:bg-green-50 cursor-pointer">
+                    <a href={`/blog/tag/${tag.toLowerCase()}`}>{tag}</a>
+                  </Badge>
+                ))}
+              </div>
+            </div>
+    
+            <Separator className="my-8" />
+    
+            {/* Author Bio */}
+            <Card className="mb-8">
+              <CardContent className="p-6">
+                <div class="flex items-start space-x-4">
+                  <Image
+                    src="/placeholder.svg?height=80&width=80"
+                    alt={blogPost.author}
+                    width={80}
+                    height={80}
+                    class="rounded-full"
+                  />
+                  <div>
+                    <h3 class="text-lg font-semibold mb-2">{blogPost.author}</h3>
+                    <p class="text-gray-600 text-sm">
+                      Lead Technician with over 12 years of experience in computer hardware and gaming systems.
+                      Specializes in custom PC builds and performance optimization.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </article>
+    
+          {/* Sidebar */}
+          <aside class="lg:col-span-1">
+            <div class="space-y-6">
+              {/* Related Posts */}
+              <Card>
+                <CardContent className="p-6">
+                  <h3 class="text-lg font-semibold mb-4">Related Articles</h3>
+                  <div class="space-y-4">
+                    {relatedPosts.map((post) => (
+                      <a href={`/blog/${post.id}`} class="block group">
+                        <div class="flex space-x-3">
+                          <Image
+                            src={post.image || "/placeholder.svg"}
+                            alt={post.title}
+                            width={80}
+                            height={60}
+                            class="rounded object-cover flex-shrink-0"
+                          />
+                          <div>
+                            <Badge variant="outline" className="text-xs mb-1">
+                              {post.category}
+                            </Badge>
+                            <h4 class="text-sm font-medium group-hover:text-green-600 transition-colors line-clamp-2">
+                              {post.title}
+                            </h4>
+                          </div>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+    
+              {/* Newsletter */}
+              <Card className="bg-green-50 border-green-200">
+                <CardContent className="p-6 text-center">
+                  <h3 class="font-semibold text-gray-900 mb-2">Stay Updated</h3>
+                  <p class="text-sm text-gray-600 mb-4">Get the latest tech tips delivered to your inbox</p>
+                  <Button className="w-full bg-green-600 hover:bg-green-700">Subscribe</Button>
+                </CardContent>
+              </Card>
+            </div>
+          </aside>
+        </div>
+    
+        {/* Navigation */}
+        <div class="flex justify-between items-center mt-12 pt-8 border-t">
+          <Button variant="outline" className="hover:bg-green-50 bg-transparent">
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Previous Article
+          </Button>
+          <Button variant="outline" className="hover:bg-green-50 bg-transparent">
+            Next Article
+            <ArrowRight className="h-4 w-4 ml-2" />
+          </Button>
+        </div>
+      </div>
+</Layout>

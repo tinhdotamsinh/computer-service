@@ -1,0 +1,278 @@
+---
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Image } from "astro:assets";
+import { Card, CardContent } from "@/components/ui/card";
+import { Check, RotateCcw, Shield, Star, Truck } from "lucide-react";
+import ImageGallery from "@/components/product/ImageGallery";
+import Layout from "@/layouts/Layout.astro";
+export const getStaticPaths = () =>{
+    const product = {
+  id: 1,
+  name: "Intel Core i7-13700K Desktop Processor",
+  brand: "Intel",
+  model: "i7-13700K",
+  sku: "BX8071513700K",
+  price: 409.99,
+  originalPrice: 449.99,
+  discount: 9,
+  inStock: true,
+  stockCount: 15,
+  rating: 4.8,
+  reviewCount: 124,
+  category: "CPU",
+  images: [
+    "/placeholder.svg?height=500&width=500&text=Intel+i7-13700K+Front",
+    "/placeholder.svg?height=500&width=500&text=Intel+i7-13700K+Side",
+    "/placeholder.svg?height=500&width=500&text=Intel+i7-13700K+Box",
+    "/placeholder.svg?height=500&width=500&text=Intel+i7-13700K+Specs",
+  ],
+  description:
+    "The Intel Core i7-13700K is a high-performance desktop processor featuring 16 cores (8 P-cores + 8 E-cores) and 24 threads. Built on Intel's advanced 10nm process technology, it delivers exceptional performance for gaming, content creation, and professional workloads.",
+  keyFeatures: [
+    "16 cores (8 P-cores + 8 E-cores), 24 threads",
+    "Base clock: 3.4 GHz, Max boost: 5.4 GHz",
+    "25MB Intel Smart Cache",
+    "Integrated Intel UHD Graphics 770",
+    "DDR4-3200 & DDR5-5600 memory support",
+    "PCIe 5.0 & PCIe 4.0 support",
+    "Intel Turbo Boost Max 3.0",
+    "Unlocked for overclocking",
+  ],
+  specifications: {
+    "Processor Family": "Intel Core i7",
+    Generation: "13th Gen",
+    Cores: "16 (8 P-cores + 8 E-cores)",
+    Threads: "24",
+    "Base Clock": "3.4 GHz",
+    "Max Boost Clock": "5.4 GHz",
+    Cache: "25MB Intel Smart Cache",
+    Socket: "LGA 1700",
+    Process: "Intel 7 (10nm)",
+    TDP: "125W",
+    "Memory Support": "DDR4-3200, DDR5-5600",
+    "PCIe Support": "PCIe 5.0, PCIe 4.0",
+    "Integrated Graphics": "Intel UHD Graphics 770",
+    Warranty: "3 years",
+  },
+  compatibility: [
+    "Intel Z790 Chipset",
+    "Intel Z690 Chipset",
+    "Intel B760 Chipset",
+    "Intel B660 Chipset",
+    "Intel H770 Chipset",
+    "Intel H670 Chipset",
+  ],
+  includedItems: ["Intel Core i7-13700K Processor", "Installation Guide", "Warranty Information"],
+  shipping: {
+    freeShipping: true,
+    estimatedDelivery: "2-3 business days",
+    expeditedAvailable: true,
+  },
+  warranty: {
+    manufacturer: "3 years",
+    store: "1 year extended available",
+  },
+  returnPolicy: "30-day return policy",
+}
+return [
+        {
+            params: {id: 1},
+            props: {product}
+        }
+    ];
+}
+const {params, props} = Astro;
+const product = props?.product || {};
+---
+<Layout>
+    <div class="container mx-auto px-4 py-8">
+        {/* Breadcrumb */}
+        <nav class="flex items-center space-x-2 text-sm text-gray-600 mb-6">
+          <a href="/" class="hover:text-green-600">
+            Home
+          </a>
+          <span>/</span>
+          <a href="/products" class="hover:text-green-600">
+            Products
+          </a>
+          <span>/</span>
+          <a href={`/products/category/${product.category.toLowerCase()}`} class="hover:text-green-600">
+            {product.category}
+          </a>
+          <span>/</span>
+          <span class="text-gray-900">{product.name}</span>
+        </nav>
+    
+        <div class="grid lg:grid-cols-2 gap-12 mb-12">
+          {/* Product Images */}
+            <ImageGallery product={product} client:load />
+    
+          {/* Product Info */}
+          <div class="space-y-6">
+            {/* Header */}
+            <div>
+              <div class="flex items-center space-x-2 mb-2">
+                <Badge variant="outline">{product.brand}</Badge>
+                <Badge variant="outline">{product.category}</Badge>
+              </div>
+              <h1 class="text-3xl font-bold text-gray-900 mb-2">{product.name}</h1>
+              <p class="text-gray-600">
+                Model: {product.model} | SKU: {product.sku}
+              </p>
+            </div>
+    
+            {/* Rating */}
+            <div class="flex items-center space-x-4">
+              <div class="flex items-center">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className={`h-5 w-5 ${
+                      i < Math.floor(product.rating) ? "text-yellow-400 fill-current" : "text-gray-300"
+                    }`}
+                  />
+                ))}
+                <span class="ml-2 text-sm text-gray-600">
+                  {product.rating} ({product.reviewCount} reviews)
+                </span>
+              </div>
+            </div>
+    
+            {/* Price */}
+            <div class="space-y-2">
+              <div class="flex items-center space-x-4">
+                <span class="text-3xl font-bold text-green-600">${product.price}</span>
+                {product.originalPrice > product.price && (
+                  <span class="text-xl text-gray-500 line-through">${product.originalPrice}</span>
+                )}
+              </div>
+              {product.originalPrice > product.price && (
+                <p class="text-sm text-green-600">
+                  You save ${(product.originalPrice - product.price).toFixed(2)} ({product.discount}%)
+                </p>
+              )}
+            </div>
+    
+            {/* Key Features */}
+            <div>
+              <h3 class="font-semibold text-gray-900 mb-3">Key Features:</h3>
+              <ul class="space-y-2">
+                {product.keyFeatures.slice(0, 4).map((feature) => (
+                  <li class="flex items-start">
+                    <Check className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+                    <span class="text-sm text-gray-700">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+    
+            {/* Quantity and Add to Cart */}
+            <div class="space-y-4">
+    
+              <div class="flex space-x-4">
+                <Button
+                  className="flex-1 bg-green-600 hover:bg-green-700 h-12"
+                >
+                    Liên hệ
+                </Button>
+              </div>
+            </div>
+    
+            {/* Shipping & Returns */}
+            <div class="space-y-3 pt-4 border-t">
+              <div class="flex items-center space-x-3">
+                <Truck className="h-5 w-5 text-green-600" />
+                <div>
+                  <p class="font-medium text-gray-900">Free Shipping</p>
+                  <p class="text-sm text-gray-600">Estimated delivery: {product.shipping.estimatedDelivery}</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-3">
+                <Shield className="h-5 w-5 text-green-600" />
+                <div>
+                  <p class="font-medium text-gray-900">{product.warranty.manufacturer} Warranty</p>
+                  <p class="text-sm text-gray-600">Manufacturer warranty included</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-3">
+                <RotateCcw className="h-5 w-5 text-green-600" />
+                <div>
+                  <p class="font-medium text-gray-900">Easy Returns</p>
+                  <p class="text-sm text-gray-600">{product.returnPolicy}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+    <Card>
+      <CardContent className="p-6">
+        <h3 class="text-xl font-semibold mb-4">Mô tả sản phẩm</h3>
+        <p class="text-gray-700 mb-6">{product.description}</p>
+    
+        <h4 class="font-semibold mb-3">Key Features:</h4>
+        <ul class="grid md:grid-cols-2 gap-2">
+          {product.keyFeatures.map((feature) => (
+            <li class="flex items-start">
+              <Check className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+              <span class="text-sm text-gray-700">{feature}</span>
+            </li>
+          ))}
+        </ul>
+    
+        <h4 class="font-semibold mb-3 mt-6">What's Included:</h4>
+        <ul class="space-y-2">
+          {product.includedItems.map((item) => (
+            <li class="flex items-start">
+              <Check className="h-4 w-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" />
+              <span class="text-sm text-gray-700">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </CardContent>
+    </Card>
+    
+        {/* Related Products */}
+        <!-- <div>
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">Related Products</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+            {relatedProducts.map((relatedProduct) => (
+              <Card key={relatedProduct.id} className="hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <Image
+                    src={relatedProduct.image || "/placeholder.svg"}
+                    alt={relatedProduct.name}
+                    width={200}
+                    height={200}
+                    class="w-full h-48 object-contain mb-4"
+                  />
+                  <h3 class="font-semibold text-lg mb-2 line-clamp-2">{relatedProduct.name}</h3>
+                  <div class="flex items-center mb-2">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        class={`h-4 w-4 ${
+                          i < Math.floor(relatedProduct.rating) ? "text-yellow-400 fill-current" : "text-gray-300"
+                        }`}
+                      />
+                    ))}
+                    <span class="ml-2 text-sm text-gray-600">({relatedProduct.rating})</span>
+                  </div>
+                  <div class="flex items-center space-x-2 mb-4">
+                    <span class="text-xl font-bold text-green-600">${relatedProduct.price}</span>
+                    {relatedProduct.originalPrice > relatedProduct.price && (
+                      <span class="text-sm text-gray-500 line-through">${relatedProduct.originalPrice}</span>
+                    )}
+                  </div>
+                  <Button className="w-full bg-green-600 hover:bg-green-700">
+                    <a href={`/products/${relatedProduct.id}`}>View Product</a>
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div> -->
+      </div>
+    
+</Layout>
