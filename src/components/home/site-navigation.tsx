@@ -21,7 +21,7 @@ export default function SiteNavigation() {
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Sản phẩm</NavigationMenuTrigger>
+            <NavigationMenuTrigger><a href="/san-pham">Sản phẩm</a></NavigationMenuTrigger>
             <NavigationMenuContent>
               <div className="grid gap-3 p-6 w-[400px] grid-cols-2">
                 <a
@@ -61,50 +61,40 @@ export default function SiteNavigation() {
             <NavigationMenuContent>
               <div className="grid gap-3 p-6 w-[300px]">
                 <a
-                  href="/services/repair"
+                  href="/dich-vu/sua-chua"
                   className="block p-3 rounded-md hover:bg-gray-50"
                 >
                   <div className="font-medium">Sửa chữa</div>
-                  <p className="text-sm text-gray-600">Sửa chữa máy tính</p>
+                  <p className="text-sm text-gray-600">Sửa chữa máy tính tại nhà</p>
                 </a>
                 <a
-                  href="/services/upgrade"
+                  href="/dich-vu/nap-muc"
                   className="block p-3 rounded-md hover:bg-gray-50"
                 >
-                  <div className="font-medium">Nâng cấp</div>
-                  <p className="text-sm text-gray-600">Nâng cấp máy tính</p>
+                  <div className="font-medium">Nạp mực máy in</div>
+                  <p className="text-sm text-gray-600">Nạp mực máy in tại nhà</p>
                 </a>
                 <a
-                  href="/services/consultation"
+                  href="/dich-vu/cai-dat"
                   className="block p-3 rounded-md hover:bg-gray-50"
                 >
-                  <div className="font-medium">Tư vấn</div>
-                  <p className="text-sm text-gray-600">Tư vấn máy tính</p>
+                  <div className="font-medium">Cài đặt máy in</div>
+                  <p className="text-sm text-gray-600">Cài đặt máy in tại nhà</p>
                 </a>
               </div>
             </NavigationMenuContent>
           </NavigationMenuItem>
-
           <NavigationMenuItem>
             <a
-              href="/shop"
+              href="/bang-gia"
               className="px-4 py-2 text-sm font-medium hover:text-green-600"
             >
-              Cửa hàng
+              Bảng giá
             </a>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <a
-              href="/policy"
-              className="px-4 py-2 text-sm font-medium hover:text-green-600"
-            >
-              Chính sách
-            </a>
-          </NavigationMenuItem>
-
-          <NavigationMenuItem>
-            <a
-              href="/contact"
+              href="/lien-he"
               className="px-4 py-2 text-sm font-medium hover:text-green-600"
             >
               Liên hệ

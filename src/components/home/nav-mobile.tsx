@@ -19,7 +19,7 @@ export default function NavMobile() {
         <a href="/products" className="text-lg font-medium">Sản phẩm</a>
         <a href="/services" className="text-lg font-medium">Dịch vụ</a>
         <a href="/shop" className="text-lg font-medium">Cửa hàng</a>
-        <a href="/contact" className="text-lg font-medium">Liên hệ</a>
+        <a href="/lien-he" className="text-lg font-medium">Liên hệ</a>
       </nav>
     </SheetContent>
   </Sheet>

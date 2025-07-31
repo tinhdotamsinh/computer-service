@@ -13,8 +13,8 @@ const {product} = Astro.props;
           src={product.image || "/placeholder.svg"}
           alt={product.name}
           width={200}
-          height={300}
-          class="w-full h-80 object-cover rounded-lg"
+          height={200}
+          class="w-full h-45 object-cover rounded-lg"
         />
         <!-- <Badge
           className="absolute top-2 right-2"
@@ -30,7 +30,11 @@ const {product} = Astro.props;
           {product.category}
         </Badge>
       </div>
-      <CardTitle className="text-lg mb-2">{product.name}</CardTitle>
+      <CardTitle className="text-lg mb-2">
+        <a href="" class="hover:text-primary duration-200">
+          {product.name}
+        </a>
+      </CardTitle>
       <div class="flex items-center justify-between mb-4">
         <div class="flex items-center gap-2">
           <span class="text-2xl font-bold text-green-600">{product.price} VNĐ</span>
@@ -39,9 +43,5 @@ const {product} = Astro.props;
           )}
         </div>
       </div>
-      <Button className="w-full">
-        <ShoppingCart className="h-4 w-4 mr-2" />
-        Thêm vào giỏ hàng
-      </Button>
     </CardContent>
   </Card>

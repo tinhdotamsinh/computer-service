@@ -1,0 +1,144 @@
+---
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import Layout from "@/layouts/Layout.astro";
+import Image from "astro/components/Image.astro";
+import { Badge, CheckCircle, Phone, Star } from "lucide-react";
+---
+<Layout>
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid lg:grid-cols-2 gap-8 items-center">
+          {/* Left Content */}
+          <div class="space-y-6">
+            <div class="space-y-4">
+              <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-blue-600 leading-tight">
+                Sửa Máy In Tại Nhà TPHCM
+              </h1>
+            </div>
+    
+            <div class="space-y-3">
+              <p class="text-gray-700 leading-relaxed">
+                Với sự <span class="font-semibold text-blue-600">thấu hiểu và tận tâm</span>,
+                <span class="font-semibold text-red-600"> ABC</span> tự hào mang đến những giải pháp toàn
+                diện. Khách hàng có thể <span class="font-semibold text-red-600">mang máy tới Cửa Hàng</span> Hoặc
+                có thể gọi
+                <span class="font-semibold text-blue-600"> dịch vụ tới tận nơi</span> mà không phát sinh chi phí
+              </p>
+    
+              <div class="space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="font-semibold text-gray-800">Dịch Vụ Nạp Mực In</span>
+                  <div class="flex items-center gap-1">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                </div>
+    
+                <p class="text-sm text-gray-600">
+                  Đổ, Bơm, Châm, Thay ✅✅ Nạp Mực Máy In A3 A4, Phun Màu, Hp, Canon, Samsung, Panasonic, Brother 🏠
+                </p>
+    
+                <div class="flex items-center gap-2 text-lg font-bold text-green-600">
+                  <span>0287.300.32.82</span>
+                  <CheckCircle className="w-5 h-5" />
+                  <span class="text-sm text-gray-600">30p Full VAT</span>
+                </div>
+              </div>
+            </div>
+    
+            <Button
+             
+            >
+              <Phone className="w-5 h-5 mr-2" />
+              Gọi Ngay 0703.033.929
+            </Button>
+    
+            <div class="space-y-4 text-sm text-gray-700 leading-relaxed">
+              <p>
+                <span class="font-semibold">CHUYÊN:</span> Sửa máy In, A3, A4, Máy In Màu, Laser Màu, Phun màu...
+                tận nơi các quận tại TPHCM <span class="font-semibold text-red-600">NHANH – CHUYÊN NGHIỆP</span> -
+                Có xuất hóa đơn đỏ VAT 10%. Đội ngũ nhân viên kỹ thuật giỏi, kinh nghiệm nhiều năm.
+              </p>
+    
+              <p>
+                Trong bối cảnh ngày càng mở rộng kinh doanh và phát triển doanh nghiệp
+                <span class="font-semibold text-blue-600"> Mực Máy In ABC</span> đã được thành lập với mục
+                đích làm được nhiều hơn nữa. Đến với Máy In ABC khách hàng sẽ tiết kiệm được rất nhiều thời gian
+                và hiệu quả hơn, bảo hành chu đáo, hài lòng khách về về{" "}
+                <span class="font-semibold text-red-600">CHẤT LƯỢNG & DỊCH VỤ</span>
+                triết tiêu chi phí xuống mức thấp nhất. Đội ngũ nhân viên IT với chuyên môn cao, trẻ năng động, tận tình
+                làm việc từ 8h sáng – 6h tối từ thứ 2 tới thứ 7 (chủ nhật nghỉ). Chúng tôi hy vọng sẽ vững bền đồng hành
+                cùng quý khách hàng trong thời gian này và thời gian tới.
+              </p>
+            </div>
+          </div>
+    
+          {/* Right Content */}
+          <div class="relative">
+            <div class="relative bg-gradient-to-br from-pink-100 to-purple-100 rounded-3xl p-8 overflow-hidden">
+    
+    
+              {/* Main image */}
+              <div class="flex justify-center mb-6">
+                <div class="relative">
+                  <Image
+                    src="/placeholder600x400.svg"
+                    alt="Professional service representative"
+                    width={600}
+                    height={400}
+                    class="rounded-2xl object-cover"
+                  />
+                </div>
+              </div>
+    
+            </div>
+    
+            {/* Brand logos */}
+            <div class="mt-6">
+              <Card className="bg-white shadow-lg">
+                <CardContent className="p-4">
+                  <div class="flex justify-between gap-4 items-center">
+                    <div class="text-center">
+                      <div class="text-red-600 font-bold text-lg">Canon</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="text-red-600 font-bold text-lg">Canon</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="text-red-600 font-bold text-lg">Canon</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="text-blue-600 font-bold text-lg">HP</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="text-blue-800 font-bold text-lg">EPSON</div>
+                    </div>
+                    <div class="text-center">
+                      <div class="text-gray-700 font-bold text-sm">LEXMARK</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+    
+        {/* Service announcement banner */}
+        <div class="mt-12 text-center">
+          <Card className="bg-red-50 border-red-200">
+            <CardContent className="p-6">
+              <div class="flex items-center justify-center gap-4 text-red-600">
+                <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                  <Phone className="w-6 h-6" />
+                </div>
+                <div>
+                  <div class="font-bold text-lg">SỬA CHỮA VÀ NẠP MỰC MÁY IN</div>
+                  <div class="text-sm">Tận nơi - Nhanh chóng - Chuyên nghiệp</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+        </div>
+</Layout>

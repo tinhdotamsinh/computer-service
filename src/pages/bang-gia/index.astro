@@ -1,0 +1,125 @@
+---
+import Layout from "@/layouts/Layout.astro";
+const pricingData = [
+    { product: "Nạp mực máy in Canon", price: "80.000 – 150.000 Đ" },
+    { product: "Nạp mực máy in Hp", price: "80.000 – 150.000 Đ" },
+    { product: "Nạp mực máy in Epson", price: "80.000 – 150.000 Đ" },
+    { product: "Nạp mực máy in Brother", price: "80.000 – 150.000 Đ" },
+    { product: "Nạp mực máy in Xerox", price: "80.000 – 150.000 Đ" },
+    { product: "Nạp mực máy in Panasonic", price: "80.000 – 150.000 Đ" },
+    { product: "Nạp mực máy in Toshiba", price: "80.000 – 150.000 Đ" },
+    { product: "Nạp mực máy in Ricoh", price: "80.000 – 150.000 Đ" },
+    { product: "Các hãng khác", price: "Liên hệ" },
+]
+---
+
+<Layout>
+    <!-- Header Section -->
+    <section class="bg-green-600 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6">Bảng Giá Dịch Vụ</h1>
+          <p class="text-xl text-green-100 max-w-2xl mx-auto">
+            Không phí ẩn, không bất ngờ. Chọn mức dịch vụ phù hợp với bạn.
+          </p>
+        </div>
+    </section>
+    <div class="container mx-auto">
+
+        <!-- Main Content with Sidebar -->
+        <div class="flex flex-col lg:flex-row gap-8 p-6">
+            <!-- Main Content -->
+            <div class="flex-1">
+                <div class="max-w-4xl mx-auto">
+                    <div class="overflow-hidden rounded-lg border border-gray-200 shadow-sm">
+                      <table class="w-full">
+                        <thead>
+                          <tr class="bg-primary text-white">
+                            <th class="px-6 py-4 text-left font-semibold text-sm uppercase tracking-wider">SẢN PHẨM</th>
+                            <th class="px-6 py-4 text-left font-semibold text-sm uppercase tracking-wider">BẢNG GIÁ</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {pricingData.map((item, index) => (
+                            <tr
+                              class={`${
+                                index % 2 === 0 ? "bg-white" : "bg-gray-50"
+                              } hover:bg-blue-50 transition-colors duration-150`}
+                            >
+                              <td class="px-6 py-4 text-gray-900 font-medium">{item.product}</td>
+                              <td class="px-6 py-4 text-gray-900 font-medium">{item.price}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Banner -->
+            <aside class="lg:w-80 w-full">
+                <div class="sticky top-6 space-y-6">
+                    <!-- Promotion Banner -->
+                    <div class="bg-gradient-to-br from-orange-500 to-red-600 text-white rounded-lg p-6 shadow-lg">
+                        <div class="text-center">
+                            <div class="bg-white/20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">Khuyến Mãi Đặc Biệt!</h3>
+                            <p class="text-orange-100 mb-4">Giảm 20% cho khách hàng lần đầu</p>
+                            <button class="bg-white text-orange-600 font-semibold px-6 py-2 rounded-full hover:bg-orange-50 transition-colors">
+                                Liên hệ ngay
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Contact Banner -->
+                    <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Liên hệ tư vấn</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center text-gray-600">
+                                <svg class="w-5 h-5 mr-3 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                                </svg>
+                                <span class="font-medium">0123 456 789</span>
+                            </div>
+                            <div class="flex items-center text-gray-600">
+                                <svg class="w-5 h-5 mr-3 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                                </svg>
+                                <span>info@example.com</span>
+                            </div>
+                            <div class="flex items-start text-gray-600">
+                                <svg class="w-5 h-5 mr-3 mt-0.5 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                                </svg>
+                                <span>123 Đường ABC, Quận 1, TP.HCM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service Hours Banner -->
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-blue-800 mb-4">Giờ phục vụ</h3>
+                        <div class="space-y-2 text-sm text-blue-700">
+                            <div class="flex justify-between">
+                                <span>Thứ 2 - Thứ 6:</span>
+                                <span class="font-medium">8:00 - 18:00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Thứ 7:</span>
+                                <span class="font-medium">8:00 - 16:00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Chủ nhật:</span>
+                                <span class="font-medium">Nghỉ</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</Layout>
