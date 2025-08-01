@@ -2,6 +2,18 @@
 import Footer from "@/components/layouts/Footer.astro";
 import Header from "@/components/layouts/Header.astro";
 import '../styles/global.css';
+import {SITE} from '@/site'
+const {
+  website = SITE.website,
+  title = SITE.title,
+  author = SITE.author,
+  profile = SITE.profile,
+  description = SITE.desc,
+  keyword= SITE.keyword,
+  ogImage = SITE.ogImage ? `/${SITE.ogImage}` : "/og.png",
+  canonicalURL = new URL(Astro.url.pathname, Astro.url),
+} = Astro.props;
+const socialImageURL = new URL(ogImage, Astro.url);
 ---
 
 <!doctype html>
@@ -11,7 +23,24 @@ import '../styles/global.css';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Name</title>
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<meta name="author" content={author} />
+		<meta name="keywords" content={keyword}>
+ 		<!-- Open Graph / Facebook -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:image" content={socialImageURL} />
+
+		 <!-- Twitter -->
+		 <meta property="twitter:card" content="summary_large_image" />
+		 <meta property="twitter:url" content={canonicalURL} />
+		 <meta property="twitter:title" content={title} />
+		 <meta property="twitter:description" content={description} />
+		 <meta property="twitter:image" content={socialImageURL} />
+
 	</head>
 	<body>
 		<Header />

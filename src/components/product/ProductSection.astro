@@ -1,65 +1,9 @@
 ---
 import { Button } from "../ui/button";
 import ProductCard from "./ProductCard.astro";
-// Sample product list
-const products = [
-  {
-    id: 1,
-    name: "Bàn phím chơi game",
-    price: 100,
-    image: "/product-1.png",
-    category: "Bàn phím",
-  },
-  {
-    id: 2,
-    name: "GPU cao cấp",
-    price: 1200,
-    image: "/product-1.png",
-    category: "Bàn phím",
-  },
-  {
-    id: 3,
-    name: "Chuột cơ",
-    price: 70,
-    image: "/product-1.png",
-    category: "Bàn phím",
-  },
-  {
-    id: 4,
-    name: "Chuột cơ",
-    price: 70,
-    image: "/product-1.png",
-    category: "Bàn phím",
-  },
-  {
-    id: 5,
-    name: "Chuột cơ",
-    price: 70,
-    image: "/product-1.png",
-    category: "Bàn phím",
-  },
-  {
-    id: 6,
-    name: "Chuột cơ",
-    price: 70,
-    image: "/product-1.png",
-    category: "Bàn phím",
-  },
-  {
-    id: 7,
-    name: "Chuột cơ",
-    price: 70,
-    image: "/product-1.png",
-    category: "Bàn phím",
-  },
-  {
-    id: 8,
-    name: "Chuột cơ",
-    price: 70,
-    image: "/product-1.png",
-    category: "Bàn phím",
-  },
-];
+import { getCollection } from "astro:content";
+const products = await getCollection("products");
+
 ---
 
 <section class="py-20 ">

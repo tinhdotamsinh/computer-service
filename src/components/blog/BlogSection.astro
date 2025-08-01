@@ -5,95 +5,17 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, Clock, User } from "lucide-react";
 import { TrendingUp } from "lucide-react";
 import { Image } from "astro:assets";
-const blogPosts = [
-  {
-    id: 1,
-    title: "Cách chọn Card đồ họa phù hợp để chơi game vào năm 2024",
-    excerpt:
-      "Hướng dẫn đầy đủ để chọn GPU hoàn hảo cho thiết lập chơi game của bạn, bao gồm các điểm chuẩn hiệu suất và cân nhắc về ngân sách.",
-    author: "Michael Rodriguez",
-    date: "2024-01-15",
-    readTime: "8 phút đọc",
-    category: "Hướng dẫn phần cứng",
-    image: "/product-1.png",
-    featured: true,
-    tags: ["GPU", "Chơi game", "Phần cứng"],
-  },
-  {
-    id: 2,
-    title: "5 dấu hiệu máy tính của bạn cần được sửa chữa chuyên nghiệp",
-    excerpt:
-      "Tìm hiểu cách nhận biết các dấu hiệu cảnh báo phổ biến cho thấy máy tính của bạn cần được bảo trì chuyên nghiệp trước khi quá muộn.",
-    author: "Sarah Chen",
-    date: "2024-01-12",
-    readTime: "5 phút đọc",
-    category: "Mẹo sửa chữa",
-    image: "/product-1.png",
-    featured: false,
-    tags: ["Sửa chữa", "Bảo trì", "Khắc phục sự cố"],
-  },
-  {
-    id: 3,
-    title: "Xây dựng PC tùy chỉnh đầu tiên của bạn: Hướng dẫn đầy đủ cho người mới bắt đầu",
-    excerpt:
-      "Hướng dẫn từng bước để lắp ráp máy tính tùy chỉnh đầu tiên của bạn, từ việc chọn linh kiện đến thiết lập cuối cùng.",
-    author: "David Thompson",
-    date: "2024-01-10",
-    readTime: "12 phút đọc",
-    category: "Hướng dẫn xây dựng",
-    image: "/product-1.png",
-    featured: false,
-    tags: ["Xây dựng PC", "Tự làm", "Linh kiện"],
-  },
-  {
-    id: 4,
-    title: "SSD so với HDD: Giải pháp lưu trữ nào phù hợp với bạn?",
-    excerpt:
-      "So sánh ổ đĩa thể rắn và ổ đĩa cứng để đưa ra quyết định lưu trữ tốt nhất cho nhu cầu và ngân sách của bạn.",
-    author: "Lisa Rodriguez",
-    date: "2024-01-08",
-    readTime: "6 phút đọc",
-    category: "Hướng dẫn lưu trữ",
-    image: "/product-1.png",
-    featured: false,
-    tags: ["Lưu trữ", "SSD", "HDD"],
-  },
-  {
-    id: 5,
-    title: "Các phương pháp hay nhất về an ninh mạng cho người dùng tại nhà",
-    excerpt:
-      "Các biện pháp bảo mật thiết yếu để bảo vệ máy tính cá nhân và dữ liệu của bạn khỏi các mối đe dọa mạng và tấn công phần mềm độc hại.",
-    author: "Michael Rodriguez",
-    date: "2024-01-05",
-    readTime: "7 phút đọc",
-    category: "Bảo mật",
-    image: "/product-1.png",
-    featured: false,
-    tags: ["Bảo mật", "Quyền riêng tư", "Phần mềm độc hại"],
-  },
-  {
-    id: 6,
-    title: "Tương lai của máy tính: Các xu hướng đáng chú ý vào năm 2024",
-    excerpt: "Khám phá các công nghệ và xu hướng mới nổi sẽ định hình ngành công nghiệp máy tính trong năm tới.",
-    author: "Sarah Chen",
-    date: "2024-01-03",
-    readTime: "9 phút đọc",
-    category: "Xu hướng công nghệ",
-    image: "/product-1.png",
-    featured: false,
-    tags: ["Xu hướng", "Công nghệ tương lai", "Đổi mới"],
-  },
-]
+import { getCollection } from "astro:content";
+const blogPosts = await getCollection("blog");
 
 const categories = [
-  { name: "Hướng dẫn phần cứng", count: 15, color: "bg-blue-100 text-blue-800" },
-  { name: "Mẹo sửa chữa", count: 12, color: "bg-green-100 text-green-800" },
-  { name: "Hướng dẫn xây dựng", count: 8, color: "bg-purple-100 text-purple-800" },
-  { name: "Bảo mật", count: 6, color: "bg-red-100 text-red-800" },
-  { name: "Xu hướng công nghệ", count: 10, color: "bg-orange-100 text-orange-800" },
+  { name: "Hướng dẫn phần cứng" },
+  { name: "Mẹo sửa chữa"},
+  { name: "Hướng dẫn xây dựng" },
+  { name: "Bảo mật" },
+  { name: "Xu hướng công nghệ" },
 ]
-const featuredPost = blogPosts.find((post) => post.featured)
-const recentPosts = blogPosts.filter((post) => !post.featured).slice(0, 5)
+const recentPosts = blogPosts.filter((post) => !post.data.draft).slice(0, 6)
 ---
 
 <section class="py-8">
@@ -112,102 +34,41 @@ const recentPosts = blogPosts.filter((post) => !post.featured).slice(0, 5)
       <div class="grid lg:grid-cols-4 gap-8">
         {/* Main Content */}
         <div class="lg:col-span-3">
-          {/* Featured Post */}
-          {featuredPost && (
-            <Card className="mb-8 overflow-hidden hover:shadow-lg transition-shadow">
-              <div class="md:flex">
-                <div class="md:w-1/2">
-                  <Image
-                    src={featuredPost.image || "/placeholder.svg"}
-                    alt={featuredPost.title}
-                    width={400}
-                    height={250}
-                    class="w-full h-64 md:h-full object-cover"
-                  />
-                </div>
-                <div class="md:w-1/2 p-6">
-                  <div class="flex items-center mb-3">
-                    <Badge className="bg-green-600 text-white mr-3">Nổi bật</Badge>
-                    <Badge variant="outline" className="text-green-600 border-green-600">
-                      {featuredPost.category}
-                    </Badge>
-                  </div>
-
-                  <h3 class="text-2xl font-bold text-gray-900 mb-3 hover:text-green-600 transition-colors">
-                    <a href={`/tin-tuc/${featuredPost.id}`}>{featuredPost.title}</a>
-                  </h3>
-
-                  <p class="text-gray-600 mb-4 line-clamp-3">{featuredPost.excerpt}</p>
-
-                  <div class="flex items-center text-sm text-gray-500 mb-4">
-                    <User className="h-4 w-4 mr-1" />
-                    <span class="mr-4">{featuredPost.author}</span>
-                    <Calendar className="h-4 w-4 mr-1" />
-                    <span class="mr-4">{new Date(featuredPost.date).toLocaleDateString()}</span>
-                    <Clock className="h-4 w-4 mr-1" />
-                    <span>{featuredPost.readTime}</span>
-                  </div>
-
-                  <div class="flex items-center justify-between">
-                    <div class="flex flex-wrap gap-2">
-                      {featuredPost.tags.slice(0, 3).map((tag, index) => (
-                        <Badge key={index} variant="secondary" className="text-xs">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="hover:bg-green-50 hover:border-green-600 bg-transparent"
-                    >
-                      <a href={`/blog/${featuredPost.id}`} class="flex items-center">
-                        Đọc thêm
-                        <ArrowRight className="h-4 w-4 ml-1" />
-                      </a>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </Card>
-          )}
 
           {/* Recent Posts Grid */}
-          <div class="grid md:grid-cols-2 gap-6">
-            {recentPosts.map((post) => (
-              <Card key={post.id} className="overflow-hidden hover:shadow-lg transition-shadow group">
+          <div class="grid md:grid-cols-3 gap-6">
+            {recentPosts.map((post, index) => (
+              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow group">
                 <div class="relative">
                   <Image
-                    src={post.image || "/placeholder.svg"}
-                    alt={post.title}
+                    src={post.data.image || "/placeholder.svg"}
+                    alt={post.data.title}
                     width={300}
                     height={200}
                     class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <Badge variant="secondary" className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm">
-                    {post.category}
+                    {post.data.category}
                   </Badge>
                 </div>
 
                 <CardContent className="p-6">
                   <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-green-600 transition-colors line-clamp-2">
-                    <a href={`/blog/${post.id}`}>{post.title}</a>
+                    <a href={`/tin-tuc/${post.data.slug}`}>{post.data.title}</a>
                   </h3>
 
-                  <p class="text-gray-600 text-sm mb-4 line-clamp-2">{post.excerpt}</p>
+                  <p class="text-gray-600 text-sm mb-4 line-clamp-2">{post.data.description}</p>
 
                   <div class="flex items-center text-xs text-gray-500 mb-3">
-                    <User className="h-3 w-3 mr-1" />
-                    <span class="mr-3">{post.author}</span>
                     <Calendar className="h-3 w-3 mr-1" />
-                    <span class="mr-3">{new Date(post.date).toLocaleDateString()}</span>
+                    <span class="mr-3">{new Date(post.data.date).toLocaleDateString()}</span>
                     <Clock className="h-3 w-3 mr-1" />
-                    <span>{post.readTime}</span>
+                    <span>{post.data.readTime}</span>
                   </div>
 
                   <div class="flex items-center justify-between">
                     <div class="flex flex-wrap gap-1">
-                      {post.tags.slice(0, 2).map((tag, index) => (
+                      {post.data.tags?.slice(0, 2).map((tag, index) => (
                         <Badge key={index} variant="outline" className="text-xs">
                           {tag}
                         </Badge>
@@ -235,13 +96,12 @@ const recentPosts = blogPosts.filter((post) => !post.featured).slice(0, 5)
                 <h3 class="text-lg font-semibold">Danh mục</h3>
               </CardHeader>
               <CardContent className="space-y-3">
-                {categories.map((category, index) => (
+                {categories.map((category) => (
                   <a
                     href={`/blog/category/${category.name.toLowerCase().replace(" ", "-")}`}
                     class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50 transition-colors"
                   >
                     <span class="font-medium text-gray-900">{category.name}</span>
-                    <Badge className={category.color}>{category.count}</Badge>
                   </a>
                 ))}
               </CardContent>

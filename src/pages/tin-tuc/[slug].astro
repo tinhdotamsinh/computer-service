@@ -1,0 +1,148 @@
+---
+import { Button } from "@/components/ui/button";
+import { Image } from "astro:assets";
+import { ArrowLeft, BookmarkPlus, Calendar, Clock, Share2, User } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { ArrowRight } from "lucide-react";
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+const blogPosts = await getCollection("blog");
+export const getStaticPaths = async () => {
+  const blogPosts = await getCollection("blog");
+    return blogPosts.map((post) => ({
+        params: {slug: post.data.slug},
+        props: {blogPost: post}
+    }));
+};
+const {params, props} = Astro;
+const blogPost = props?.blogPost || {};
+---
+<Layout>
+    <div class="container mx-auto px-4 py-8">
+        {/* Back Button */}
+        <div class="mb-6">
+          <Button variant="ghost" className="hover:bg-green-50">
+            <a href="/blog" class="flex items-center">
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Blog
+            </a>
+          </Button>
+        </div>
+    
+        <div class="grid lg:grid-cols-4 gap-8">
+          {/* Main Content */}
+          <article class="lg:col-span-3">
+            {/* Header */}
+            <div class="mb-8">
+              <Badge className="bg-green-100 text-green-800 mb-4">{blogPost.data.category}</Badge>
+    
+              <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{blogPost.data.title}</h1>
+    
+              <div class="flex items-center text-gray-600 mb-6">
+                <Calendar className="h-4 w-4 mr-2" />
+                <span class="mr-4">{new Date(blogPost.data.date).toLocaleDateString()}</span>
+                <Clock className="h-4 w-4 mr-2" />
+                <span>{blogPost.data.readTime}</span>
+              </div>
+    
+              <div class="flex items-center gap-4 mb-6">
+                <Button variant="outline" size="sm">
+                  <Share2 className="h-4 w-4 mr-2" />
+                  Share
+                </Button>
+                <Button variant="outline" size="sm">
+                  <BookmarkPlus className="h-4 w-4 mr-2" />
+                  Save
+                </Button>
+              </div>
+            </div>
+    
+            {/* Featured Image */}
+            <div class="mb-8">
+              <Image
+                src={blogPost.data.image || "/placeholder.svg"}
+                alt={blogPost.data.title}
+                width={800}
+                height={400}
+                class="w-full h-64 md:h-96 object-cover rounded-lg"
+              />
+            </div>
+    
+            {/* Content */}
+            <div class="prose prose-lg max-w-none mb-8" set:html={blogPost.body} />
+    
+            {/* Tags */}
+            <div class="mb-8">
+              <h3 class="text-lg font-semibold mb-4">Tags</h3>
+              <div class="flex flex-wrap gap-2">
+                {blogPost.data.tags?.map((tag, index) => (
+                  <Badge key={index} variant="outline" className="hover:bg-green-50 cursor-pointer">
+                    <a href={`/blog/tag/${tag.toLowerCase()}`}>{tag}</a>
+                  </Badge>
+                ))}
+              </div>
+            </div>
+    
+            <Separator className="my-8" />
+          </article>
+    
+          {/* Sidebar */}
+          <aside class="lg:col-span-1">
+            <div class="space-y-6">
+              {/* Related Posts */}
+              <Card>
+                <CardContent className="p-6">
+                  <h3 class="text-lg font-semibold mb-4">Related Articles</h3>
+                  <div class="space-y-4">
+                    {blogPosts.slice(0, 3).map((post) => (
+                      <a href={`/blog/${post.data.slug}`} class="block group">
+                        <div class="flex space-x-3">
+                          <Image
+                            src={post.data.image || "/placeholder.svg"}
+                            alt={post.data.title}
+                            width={80}
+                            height={60}
+                            class="rounded object-cover flex-shrink-0"
+                          />
+                          <div>
+                            <Badge variant="outline" className="text-xs mb-1">
+                              {post.data.category}
+                            </Badge>
+                            <h4 class="text-sm font-medium group-hover:text-green-600 transition-colors line-clamp-2">
+                              {post.data.title}
+                            </h4>
+                          </div>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+    
+              {/* Newsletter */}
+              <Card className="bg-green-50 border-green-200">
+                <CardContent className="p-6 text-center">
+                  <h3 class="font-semibold text-gray-900 mb-2">Stay Updated</h3>
+                  <p class="text-sm text-gray-600 mb-4">Get the latest tech tips delivered to your inbox</p>
+                  <Button className="w-full bg-green-600 hover:bg-green-700">Subscribe</Button>
+                </CardContent>
+              </Card>
+            </div>
+          </aside>
+        </div>
+    
+        {/* Navigation */}
+        <div class="flex justify-between items-center mt-12 pt-8 border-t">
+          <Button variant="outline" className="hover:bg-green-50 bg-transparent">
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Previous Article
+          </Button>
+          <Button variant="outline" className="hover:bg-green-50 bg-transparent">
+            Next Article
+            <ArrowRight className="h-4 w-4 ml-2" />
+          </Button>
+        </div>
+      </div>
+</Layout>
