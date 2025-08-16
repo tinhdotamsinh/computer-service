@@ -37,7 +37,7 @@ const contactMethods = [
     primary: "support@techstore.com",
     secondary: "sales@techstore.com",
     hours: "Thời gian phản hồi: 24-48 giờ",
-    color: "bg-green-500",
+    color: "bg-primary-500",
   },
   {
     icon: MessageSquare,
@@ -120,10 +120,10 @@ const faqs = [
 ---
 
 <Layout>
-    <section class="bg-green-600 text-white py-16">
+    <section class="bg-primary text-white py-16">
         <div class="container mx-auto px-4 text-center">
           <h1 class="text-4xl md:text-5xl font-bold mb-6">Liên hệ với chúng tôi</h1>
-          <p class="text-xl text-green-100 max-w-2xl mx-auto">
+          <p class="text-xl text-primary-100 max-w-2xl mx-auto">
             Bạn có câu hỏi về sản phẩm hoặc dịch vụ của chúng tôi? Chúng tôi luôn sẵn sàng trợ giúp! Liên hệ với chúng tôi qua bất kỳ phương thức nào dưới đây.
           </p>
         </div>
@@ -161,7 +161,7 @@ const faqs = [
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center text-2xl">
-                  <Send className="h-6 w-6 mr-3 text-green-600" />
+                  <Send className="h-6 w-6 mr-3 text-primary" />
                   Gửi tin nhắn cho chúng tôi
                 </CardTitle>
                 <p class="text-gray-600">Điền vào biểu mẫu dưới đây và chúng tôi sẽ liên hệ lại với bạn sớm nhất có thể.</p>
@@ -241,7 +241,7 @@ const faqs = [
     
                     <Button
                       type="submit"
-                      className="w-full bg-green-600 hover:bg-green-700 h-12"
+                      className="w-full bg-primary hover:bg-primary-700 h-12"
                     >
                         <>
                           <Send className="h-4 w-4 mr-2" />
@@ -293,7 +293,7 @@ const faqs = [
               <CardContent className="p-8">
                 <div class="space-y-6">
                   <div class="flex items-start space-x-4">
-                    <MapPin className="h-6 w-6 text-green-600 mt-1" />
+                    <MapPin className="h-6 w-6 text-primary mt-1" />
                     <div>
                       <h3 class="font-semibold text-lg mb-2">Địa điểm chính của TechStore</h3>
                       <p class="text-gray-600">
@@ -307,7 +307,7 @@ const faqs = [
                   </div>
     
                   <div class="flex items-start space-x-4">
-                    <Phone className="h-6 w-6 text-green-600 mt-1" />
+                    <Phone className="h-6 w-6 text-primary mt-1" />
                     <div>
                       <h4 class="font-medium mb-1">Điện thoại</h4>
                       <p class="text-gray-600">+1 (555) 123-4567</p>
@@ -315,7 +315,7 @@ const faqs = [
                   </div>
     
                   <div class="flex items-start space-x-4">
-                    <Mail className="h-6 w-6 text-green-600 mt-1" />
+                    <Mail className="h-6 w-6 text-primary mt-1" />
                     <div>
                       <h4 class="font-medium mb-1">Email</h4>
                       <p class="text-gray-600">info@techstore.com</p>
@@ -323,7 +323,7 @@ const faqs = [
                   </div>
     
                   <div class="flex items-start space-x-4">
-                    <Clock className="h-6 w-6 text-green-600 mt-1" />
+                    <Clock className="h-6 w-6 text-primary mt-1" />
                     <div>
                       <h4 class="font-medium mb-2">Giờ cửa hàng</h4>
                       <div class="space-y-1 text-sm text-gray-600">
@@ -334,7 +334,7 @@ const faqs = [
                     </div>
                   </div>
     
-                  <Button className="w-full bg-green-600 hover:bg-green-700">
+                  <Button className="w-full bg-primary hover:bg-primary-700">
                     <Navigation className="h-4 w-4 mr-2" />
                     Chỉ đường
                   </Button>

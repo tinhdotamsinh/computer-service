@@ -19,11 +19,11 @@ export const getStaticPaths = async () => {
 const {params, props} = Astro;
 const blogPost = props?.blogPost || {};
 ---
-<Layout>
+<Layout title={blogPost.data.title} description={blogPost.data.description} ogImage={blogPost.data.image}>
     <div class="container mx-auto px-4 py-8">
         {/* Back Button */}
         <div class="mb-6">
-          <Button variant="ghost" className="hover:bg-green-50">
+          <Button variant="ghost" className="hover:bg-primary-50">
             <a href="/blog" class="flex items-center">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Blog
@@ -36,7 +36,7 @@ const blogPost = props?.blogPost || {};
           <article class="lg:col-span-3">
             {/* Header */}
             <div class="mb-8">
-              <Badge className="bg-green-100 text-green-800 mb-4">{blogPost.data.category}</Badge>
+              <Badge className="bg-primary-100 text-primary-800 mb-4">{blogPost.data.category}</Badge>
     
               <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{blogPost.data.title}</h1>
     
@@ -78,7 +78,7 @@ const blogPost = props?.blogPost || {};
               <h3 class="text-lg font-semibold mb-4">Tags</h3>
               <div class="flex flex-wrap gap-2">
                 {blogPost.data.tags?.map((tag, index) => (
-                  <Badge key={index} variant="outline" className="hover:bg-green-50 cursor-pointer">
+                  <Badge key={index} variant="outline" className="hover:bg-primary-50 cursor-pointer">
                     <a href={`/blog/tag/${tag.toLowerCase()}`}>{tag}</a>
                   </Badge>
                 ))}
@@ -110,7 +110,7 @@ const blogPost = props?.blogPost || {};
                             <Badge variant="outline" className="text-xs mb-1">
                               {post.data.category}
                             </Badge>
-                            <h4 class="text-sm font-medium group-hover:text-green-600 transition-colors line-clamp-2">
+                            <h4 class="text-sm font-medium group-hover:text-primary transition-colors line-clamp-2">
                               {post.data.title}
                             </h4>
                           </div>
@@ -122,11 +122,11 @@ const blogPost = props?.blogPost || {};
               </Card>
     
               {/* Newsletter */}
-              <Card className="bg-green-50 border-green-200">
+              <Card className="bg-primary-50 border-green-200">
                 <CardContent className="p-6 text-center">
                   <h3 class="font-semibold text-gray-900 mb-2">Stay Updated</h3>
                   <p class="text-sm text-gray-600 mb-4">Get the latest tech tips delivered to your inbox</p>
-                  <Button className="w-full bg-green-600 hover:bg-green-700">Subscribe</Button>
+                  <Button className="w-full bg-primary hover:bg-primary-700">Subscribe</Button>
                 </CardContent>
               </Card>
             </div>
@@ -135,11 +135,11 @@ const blogPost = props?.blogPost || {};
     
         {/* Navigation */}
         <div class="flex justify-between items-center mt-12 pt-8 border-t">
-          <Button variant="outline" className="hover:bg-green-50 bg-transparent">
+          <Button variant="outline" className="hover:bg-primary-50 bg-transparent">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Previous Article
           </Button>
-          <Button variant="outline" className="hover:bg-green-50 bg-transparent">
+          <Button variant="outline" className="hover:bg-primary-50 bg-transparent">
             Next Article
             <ArrowRight className="h-4 w-4 ml-2" />
           </Button>

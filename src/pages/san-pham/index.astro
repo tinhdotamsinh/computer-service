@@ -132,7 +132,7 @@ function createPageUrl(page: number) {
                   name="inStock"
                   value="true"
                   checked={showInStockOnly}
-                  class="rounded border-gray-300 text-green-600 focus:ring-green-500"
+                  class="rounded border-gray-300 text-primary focus:ring-green-500"
                 />
                 <label for="inStock" class="text-sm font-medium">
                   Chỉ hiển thị còn hàng
@@ -201,7 +201,7 @@ function createPageUrl(page: number) {
                   href={createPageUrl(page)}
                   class={`px-3 py-2 rounded-md transition-colors ${
                     page === currentPage
-                      ? 'bg-green-600 text-white'
+                      ? 'bg-primary text-white'
                       : 'border border-gray-300 hover:bg-gray-50'
                   }`}
                 >

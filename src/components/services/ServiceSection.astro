@@ -61,7 +61,7 @@ const services = [
             <Card key={index} className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div class="flex items-center space-x-4">
-                  <div class="bg-green-600 p-3 rounded-lg">
+                  <div class="bg-primary p-3 rounded-lg">
                     <Icon className="h-6 w-6 text-white" />
                   </div>
                   <div>
@@ -71,7 +71,7 @@ const services = [
                         <Clock className="h-4 w-4 mr-1" />
                         {service.duration}
                       </span>
-                      <span class="font-semibold text-green-600">{service.price}</span>
+                      <span class="font-semibold text-primary">{service.price}</span>
                     </div>
                   </div>
                 </div>
@@ -81,12 +81,12 @@ const services = [
                 <ul class="space-y-2 mb-6">
                   {service.features.map((feature) => (
                     <li class="flex items-center text-sm">
-                      <CheckCircle className="h-4 w-4 text-green-600 mr-2 flex-shrink-0" />
+                      <CheckCircle className="h-4 w-4 text-primary mr-2 flex-shrink-0" />
                       {feature}
                     </li>
                   ))}
                 </ul>
-                <Button className="w-full bg-green-600 hover:bg-green-700">
+                <Button className="w-full bg-primary hover:bg-primary-700">
                   Đặt lịch dịch vụ
                   <ArrowRight className="h-4 w-4 ml-2" />
                 </Button>
@@ -101,29 +101,29 @@ const services = [
         <h3 class="text-2xl font-bold text-center mb-8">Cam kết dịch vụ</h3>
         <div class="grid md:grid-cols-4 gap-6 text-center">
           <div>
-            <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Shield className="h-8 w-8 text-green-600" />
+            <div class="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Shield className="h-8 w-8 text-primary" />
             </div>
             <h4 class="font-semibold mb-2">Bảo hành 90 ngày</h4>
             <p class="text-sm text-gray-600">Tất cả dịch vụ sửa chữa được bảo hành 90 ngày</p>
           </div>
           <div>
-            <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Clock className="h-8 w-8 text-green-600" />
+            <div class="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Clock className="h-8 w-8 text-primary" />
             </div>
             <h4 class="font-semibold mb-2">Xử lý nhanh chóng</h4>
             <p class="text-sm text-gray-600">Hầu hết sửa chữa hoàn thành trong 24-48 giờ</p>
           </div>
           <div>
-            <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <CheckCircle className="h-8 w-8 text-green-600" />
+            <div class="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <CheckCircle className="h-8 w-8 text-primary" />
             </div>
             <h4 class="font-semibold mb-2">Sữa chữa tận nơi</h4>
             <p class="text-sm text-gray-600">Sửa chữa tận nơi, không phải mang máy đến cửa hàng</p>
           </div>
           <div>
-            <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Wrench className="h-8 w-8 text-green-600" />
+            <div class="bg-primary-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Wrench className="h-8 w-8 text-primary" />
             </div>
             <h4 class="font-semibold mb-2">Chẩn đoán miễn phí</h4>
             <p class="text-sm text-gray-600">Miễn phí kiểm tra và tư vấn lỗi ban đầu</p>

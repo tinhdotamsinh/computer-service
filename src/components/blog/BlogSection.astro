@@ -23,7 +23,7 @@ const recentPosts = blogPosts.filter((post) => !post.data.draft).slice(0, 6)
       {/* Header */}
       <div class="text-center mb-12">
         <div class="flex items-center justify-center mb-4">
-          <TrendingUp className="h-8 w-8 text-green-600 mr-3" />
+          <TrendingUp className="h-8 w-8 text-primary mr-3" />
           <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Blog & Mẹo công nghệ</h2>
         </div>
         <p class="text-gray-600 max-w-2xl mx-auto">
@@ -53,7 +53,7 @@ const recentPosts = blogPosts.filter((post) => !post.data.draft).slice(0, 6)
                 </div>
 
                 <CardContent className="p-6">
-                  <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-green-600 transition-colors line-clamp-2">
+                  <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors line-clamp-2">
                     <a href={`/tin-tuc/${post.data.slug}`}>{post.data.title}</a>
                   </h3>
 
@@ -74,7 +74,7 @@ const recentPosts = blogPosts.filter((post) => !post.data.draft).slice(0, 6)
                         </Badge>
                       ))}
                     </div>
-                    <Button variant="ghost" size="sm" className="text-green-600 hover:text-green-700 p-0">
+                    <Button variant="ghost" size="sm" className="text-primary hover:text-primary-700 p-0">
                       <a href={`/blog/${post.id}`} class="flex items-center">
                         Đọc
                         <ArrowRight className="h-3 w-3 ml-1" />
@@ -108,16 +108,16 @@ const recentPosts = blogPosts.filter((post) => !post.data.draft).slice(0, 6)
             </Card>
 
             {/* Newsletter Signup */}
-            <Card className="bg-green-50 border-green-200">
+            <Card className="bg-primary-50 border-green-200">
               <CardContent className="p-6 text-center">
-                <div class="bg-green-600 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div class="bg-primary w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                   <TrendingUp className="h-6 w-6 text-white" />
                 </div>
                 <h3 class="font-semibold text-gray-900 mb-2">Luôn cập nhật</h3>
                 <p class="text-sm text-gray-600 mb-4">
                   Nhận các mẹo và bài viết công nghệ mới nhất được gửi đến hộp thư của bạn
                 </p>
-                <Button className="w-full bg-green-600 hover:bg-green-700">Đăng ký Blog</Button>
+                <Button className="w-full bg-primary hover:bg-primary-700">Đăng ký Blog</Button>
               </CardContent>
             </Card>
 
@@ -141,7 +141,7 @@ const recentPosts = blogPosts.filter((post) => !post.data.draft).slice(0, 6)
                     <Badge
                       key={index}
                       variant="outline"
-                      className="cursor-pointer hover:bg-green-50 hover:border-green-600 transition-colors"
+                      className="cursor-pointer hover:bg-primary-50 hover:border-green-600 transition-colors"
                     >
                       <a href={`/blog/tag/${tag.toLowerCase()}`}>{tag}</a>
                     </Badge>
@@ -155,7 +155,7 @@ const recentPosts = blogPosts.filter((post) => !post.data.draft).slice(0, 6)
 
       {/* View All Button */}
       <div class="text-center mt-12">
-        <Button size="lg" className="bg-green-600 hover:bg-green-700">
+        <Button size="lg" className="bg-primary hover:bg-primary-700">
           <a href="/blog" class="flex items-center">
             Xem tất cả bài viết
             <ArrowRight className="h-4 w-4 ml-2" />

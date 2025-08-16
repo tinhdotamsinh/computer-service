@@ -14,11 +14,11 @@ export default function NavMobile() {
       </Button>
     </SheetTrigger>
     <SheetContent>
-      <nav className="flex flex-col space-y-4 mt-8">
+      <nav className="flex flex-col space-y-4 mt-8 pl-3">
         <a href="/" className="text-lg font-medium">Trang chủ</a>
-        <a href="/products" className="text-lg font-medium">Sản phẩm</a>
-        <a href="/services" className="text-lg font-medium">Dịch vụ</a>
-        <a href="/shop" className="text-lg font-medium">Cửa hàng</a>
+        <a href="/san-pham" className="text-lg font-medium">Sản phẩm</a>
+        <a href="/bang-gia" className="text-lg font-medium">Bảng giá</a>
+        <a href="/dich-vu" className="text-lg font-medium">Dịch vụ</a>
         <a href="/lien-he" className="text-lg font-medium">Liên hệ</a>
       </nav>
     </SheetContent>

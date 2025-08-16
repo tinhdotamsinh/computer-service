@@ -6,13 +6,14 @@ import { Input } from "@/components/ui/input";
 
 import  SiteNavigation from "@/components/home/site-navigation";
 import NavMobile from "@/components/home/nav-mobile";
+import { Image } from "astro:assets";
 
 const cartItems = 3; // You can pass this as a prop or from Astro props later
 ---
 
 <header class="border-b bg-white sticky top-0 z-50">
   <!-- Top bar -->
-  <div class="bg-green-600 text-white py-2">
+  <div class="bg-primary text-white py-2">
     <div class="container mx-auto px-4 flex justify-between items-center text-sm">
       <div class="flex items-center gap-4">
         <div class="flex items-center gap-2">
@@ -25,7 +26,7 @@ const cartItems = 3; // You can pass this as a prop or from Astro props later
         </div>
       </div>
       <div class="hidden md:block">
-        <span>Free shipping on orders over $100!</span>
+        <span>Trang đang trong test mode</span>
       </div>
     </div>
   </div>
@@ -35,37 +36,29 @@ const cartItems = 3; // You can pass this as a prop or from Astro props later
     <div class="flex items-center justify-between">
       <!-- Logo -->
       <a href="/" class="flex items-center space-x-2">
-        <div class="bg-green-600 text-white p-2 rounded-lg">
-          <span class="font-bold text-xl">TS</span>
+        <div class="text-white rounded-lg">
+          <Image src="/logo.jpeg" alt="Logo" width={80} height={80} class="h-30 w-30 object-cover" />
         </div>
         <div>
-          <h1 class="font-bold text-xl text-gray-900">TechStore</h1>
-          <p class="text-sm text-gray-600">Computer Solutions</p>
+          <h1 class="font-bold text-xl text-gray-900">Thiên Vũ</h1>
+          <p class="text-sm text-gray-600">Giải pháp cho máy tính</p>
         </div>
       </a>
 
       <!-- Search bar -->
       <div class="hidden md:flex flex-1 max-w-md mx-8">
         <div class="relative w-full">
-          <Input type="search" placeholder="Search products..." className="pl-10 pr-4" />
+          <Input type="search" placeholder="Tìm kiếm sản phẩm..." className="pl-10 pr-4" />
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
         </div>
       </div>
 
       <!-- Actions -->
       <div class="flex items-center space-x-4">
-        <Button variant="success" size="sm" className="hidden rounded-full md:flex">
-          Đặt lịch ngay
-        </Button>
-
-        <Button variant="ghost" size="sm" className="relative">
-          <ShoppingCart className="h-4 w-4" />
-          {cartItems > 0 && (
-            <Badge className="absolute -top-2 -right-2 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs">
-              {cartItems}
-            </Badge>
-          )}
-        </Button>
+        
+          <Button variant="success" size="sm" className="hidden rounded-full md:flex">
+            Đặt lịch Zalo
+          </Button>
 
         <!-- Mobile menu -->
         <NavMobile client:load/>

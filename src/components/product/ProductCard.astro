@@ -14,7 +14,7 @@ const {product} = Astro.props;
           alt={product.data.title}
           width={200}
           height={200}
-          class="w-full h-25 md:h-45 object-cover rounded-lg"
+          class="w-full h-60 md:h-45 object-cover rounded-lg"
         />
         </a>
         <!-- <Badge
@@ -38,7 +38,7 @@ const {product} = Astro.props;
       </CardTitle>
       <div class="flex items-center justify-between mb-4">
         <div class="flex items-center gap-2">
-          <span class="text-2xl font-bold text-green-600">{formatCurrency(product.data.price)}</span>
+          <span class="text-2xl font-bold text-primary">{formatCurrency(product.data.price)}</span>
           {product.data.priceSale > product.data.price && (
             <span class="text-sm text-gray-500 line-through">{formatCurrency(product.data.priceSale)}</span>
           )}

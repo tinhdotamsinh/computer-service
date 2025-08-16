@@ -14,14 +14,16 @@ export default function SiteNavigation() {
           <NavigationMenuItem>
             <a
               href="/"
-              className="px-4 py-2 text-sm font-medium hover:text-green-600"
+              className="px-4 py-2 text-sm font-medium hover:text-primary"
             >
               Trang chủ
             </a>
           </NavigationMenuItem>
 
           <NavigationMenuItem>
-            <NavigationMenuTrigger><a href="/san-pham">Sản phẩm</a></NavigationMenuTrigger>
+            <NavigationMenuTrigger>
+              <a href="/san-pham">Sản phẩm</a>
+            </NavigationMenuTrigger>
             <NavigationMenuContent>
               <div className="grid gap-3 p-6 w-[400px] grid-cols-2">
                 <a
@@ -65,21 +67,27 @@ export default function SiteNavigation() {
                   className="block p-3 rounded-md hover:bg-gray-50"
                 >
                   <div className="font-medium">Sửa chữa</div>
-                  <p className="text-sm text-gray-600">Sửa chữa máy tính tại nhà</p>
+                  <p className="text-sm text-gray-600">
+                    Sửa chữa máy tính tại nhà
+                  </p>
                 </a>
                 <a
                   href="/dich-vu/nap-muc"
                   className="block p-3 rounded-md hover:bg-gray-50"
                 >
                   <div className="font-medium">Nạp mực máy in</div>
-                  <p className="text-sm text-gray-600">Nạp mực máy in tại nhà</p>
+                  <p className="text-sm text-gray-600">
+                    Nạp mực máy in tại nhà
+                  </p>
                 </a>
                 <a
                   href="/dich-vu/cai-dat"
                   className="block p-3 rounded-md hover:bg-gray-50"
                 >
                   <div className="font-medium">Cài đặt máy in</div>
-                  <p className="text-sm text-gray-600">Cài đặt máy in tại nhà</p>
+                  <p className="text-sm text-gray-600">
+                    Cài đặt máy in tại nhà
+                  </p>
                 </a>
               </div>
             </NavigationMenuContent>
@@ -87,7 +95,7 @@ export default function SiteNavigation() {
           <NavigationMenuItem>
             <a
               href="/bang-gia"
-              className="px-4 py-2 text-sm font-medium hover:text-green-600"
+              className="px-4 py-2 text-sm font-medium hover:text-primary"
             >
               Bảng giá
             </a>
@@ -95,7 +103,7 @@ export default function SiteNavigation() {
           <NavigationMenuItem>
             <a
               href="/lien-he"
-              className="px-4 py-2 text-sm font-medium hover:text-green-600"
+              className="px-4 py-2 text-sm font-medium hover:text-primary"
             >
               Liên hệ
             </a>
